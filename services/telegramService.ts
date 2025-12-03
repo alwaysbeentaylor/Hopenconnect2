@@ -1,10 +1,8 @@
 import { ContactFormData } from '../types';
 
 // NOTE: In a real deployment, these should be environment variables.
-// Since this is a generated demo, placeholders are used.
-// The user should replace these with their actual Bot Token and Chat ID.
-const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
-const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';
+const TELEGRAM_BOT_TOKEN = '8547433349:AAFniIQU7rO9-nzHkgJK6F7Hv3MzLzv1Ymk';
+const TELEGRAM_CHAT_ID = '1471110442';
 
 export const sendLeadToTelegram = async (data: ContactFormData): Promise<boolean> => {
   if (TELEGRAM_BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE') {
