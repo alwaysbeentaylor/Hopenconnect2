@@ -1,0 +1,58 @@
+# Robots.txt voor Hope Connects - Vastgoed & Renovatie
+# Optimaal geconfigureerd voor SEO en Google indexering
+
+# Algemeen voor alle robots
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /private/
+
+# Speciale instructies voor Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Speciale instructies voor Google Images (belangrijk voor vastgoedfoto's)
+User-agent: Googlebot-Image
+Allow: /
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+
+# Speciale instructies voor Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap locatie (BELANGRIJK voor SEO)
+Sitemap: https://hopeconnects.com/sitemap.xml
+
+# Blokkeer scraping bots en spam bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sta legitieme social media bots toe voor Open Graph previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /

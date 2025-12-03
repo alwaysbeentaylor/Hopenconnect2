@@ -8,19 +8,22 @@ const services = [
     id: '01',
     title: 'Renovatie Coördinatie',
     description: 'Van ruwbouw tot verfijnde afwerking. Wij nemen de leiding over aannemers, budget en timing, zodat u zorgeloos kunt toekijken hoe uw visie werkelijkheid wordt.',
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'Professionele renovatie coördinatie - Premium vastgoedrenovatie in Nederland en België'
   },
   {
     id: '02',
     title: 'Verkoopbemiddeling',
     description: 'Een discreet en krachtig netwerk. Wij positioneren uw eigendom in de markt met oog voor detail, esthetiek en de juiste doelgroep.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'Luxe vastgoed verkopen - Discrete verkoopbemiddeling exclusieve woningen'
   },
   {
     id: '03',
     title: 'Investeringsadvies',
     description: '', // Will be set dynamically
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'Vastgoed investeringsadvies - Strategisch advies voor vastgoedportefeuille'
   }
 ];
 
@@ -67,7 +70,7 @@ const Services: React.FC = () => {
                   <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeService === index ? 'max-h-[500px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
                     {/* Mobile Image */}
                     <div className="lg:hidden mb-6 rounded-sm overflow-hidden h-48 w-full">
-                       <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                       <img src={service.image} alt={service.alt || service.title} loading="lazy" className="w-full h-full object-cover" />
                     </div>
 
                     <p className="text-gray-500 font-light pl-0 md:pl-10 max-w-md leading-relaxed text-base md:text-lg">
@@ -87,7 +90,8 @@ const Services: React.FC = () => {
                 <img
                   key={service.id}
                   src={service.image}
-                  alt={service.title}
+                  alt={service.alt || service.title}
+                  loading={index === 0 ? "eager" : "lazy"}
                   className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out shadow-2xl ${activeService === index ? 'opacity-100 scale-100 grayscale-0' : 'opacity-0 scale-95 grayscale'}`}
                 />
               ))}

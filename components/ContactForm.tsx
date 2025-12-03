@@ -4,6 +4,7 @@ import { ProjectType, ContactFormData } from '../types';
 import { sendLeadToTelegram } from '../services/telegramService';
 import { useCountry } from '../contexts/CountryContext';
 import { getTranslations } from '../config/translations';
+import { trackContactFormSubmit, trackPhoneClick } from '../utils/analytics';
 
 const ContactForm: React.FC = () => {
   const { country } = useCountry();
@@ -26,11 +27,20 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    
+
+    // Track form submission in Google Analytics (LEAD GENERATION)
+    trackContactFormSubmit({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.projectType,
+      country: country,
+    });
+
     // Simulate a slightly longer delay for the animation effect if the API is too fast
     const minDelay = new Promise(resolve => setTimeout(resolve, 800));
     const request = sendLeadToTelegram(formData);
-    
+
     const [success] = await Promise.all([request, minDelay]);
 
     if (success) {
@@ -57,7 +67,13 @@ const ContactForm: React.FC = () => {
               <div className="flex flex-col">
                 <span className="text-xs uppercase tracking-widest text-gray-400 mb-2">Contact</span>
                 <a href="mailto:info@hope-connects.com" className="text-xl font-serif hover:text-gold transition-colors">info@hope-connects.com</a>
-                <span className="text-lg mt-1">{t.contact.phone}</span>
+                <a
+                  href={`tel:${t.contact.phone.replace(/\s/g, '')}`}
+                  onClick={() => trackPhoneClick()}
+                  className="text-lg mt-1 hover:text-gold transition-colors cursor-pointer"
+                >
+                  {t.contact.phone}
+                </a>
               </div>
             </div>
           </div>

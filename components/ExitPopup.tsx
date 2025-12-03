@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Download, Gift, ArrowRight } from 'lucide-react';
 import { useCountry } from '../contexts/CountryContext';
 import { getTranslations } from '../config/translations';
+import { trackGuideDownload, trackExitIntent } from '../utils/analytics';
 
 interface ExitPopupProps {
   onEmailSubmit?: (email: string) => void;
@@ -29,6 +30,9 @@ const ExitPopup: React.FC<ExitPopupProps> = ({ onEmailSubmit }) => {
         setIsVisible(true);
         setHasShown(true);
         sessionStorage.setItem('exitPopupShown', 'true');
+
+        // Track exit intent popup shown
+        trackExitIntent(true);
       }
     };
 
@@ -46,6 +50,9 @@ const ExitPopup: React.FC<ExitPopupProps> = ({ onEmailSubmit }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+
+    // Track guide download in Google Analytics (LEAD GENERATION)
+    trackGuideDownload(email, country);
 
     // Send to Telegram via the service
     if (onEmailSubmit) {

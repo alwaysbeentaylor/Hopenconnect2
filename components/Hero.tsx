@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowDownRight, ArrowRight } from 'lucide-react';
 import { useCountry } from '../contexts/CountryContext';
 import { getTranslations } from '../config/translations';
+import { trackCTAClick } from '../utils/analytics';
 
 const Hero: React.FC = () => {
   const { country } = useCountry();
@@ -26,15 +27,17 @@ const Hero: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
+            onClick={() => trackCTAClick('Gratis Adviesgesprek', 'Hero')}
             className="group relative px-10 py-5 bg-gold text-charcoal text-xs uppercase tracking-[0.25em] font-semibold transition-all duration-300 hover:bg-charcoal hover:text-white hover:shadow-2xl flex items-center gap-4"
           >
             <span>Gratis Adviesgesprek</span>
             <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-300" />
           </a>
-          <a 
-            href="#diensten" 
+          <a
+            href="#diensten"
+            onClick={() => trackCTAClick('Bekijk diensten', 'Hero')}
             className="text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-1"
           >
             Bekijk diensten
