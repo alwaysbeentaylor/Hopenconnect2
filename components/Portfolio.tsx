@@ -75,10 +75,6 @@ const Portfolio: React.FC = () => {
                 </div>
               </div>
             ))}
-            
-            <a href="#" className="inline-flex items-center text-charcoal uppercase tracking-widest text-xs hover:text-gold transition-colors mt-8">
-              Bekijk Alle Projecten <ArrowRight size={16} className="ml-2" />
-            </a>
           </div>
 
         </div>
