@@ -1,20 +1,47 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const USP: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Only animate once
+        }
+      },
+      {
+        threshold: 0.2, // Trigger when 20% visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="over-ons" className="py-32 bg-charcoal text-offwhite relative overflow-hidden">
+    <section 
+      id="over-ons" 
+      ref={sectionRef}
+      className="py-32 bg-charcoal text-offwhite relative overflow-hidden"
+    >
       {/* Background Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-5">
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-5 transition-transform duration-1000 ease-out ${isVisible ? 'scale-100' : 'scale-110'}`}>
         <h2 className="text-[12vw] font-serif leading-none">HOPE</h2>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className={`container mx-auto px-6 md:px-12 relative z-10 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           
           <div className="order-2 md:order-1">
              <div className="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" className="w-full h-64 object-cover mt-12" alt="Interior Detail" />
-                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" className="w-full h-64 object-cover" alt="Architectural Plan" />
+                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" className={`w-full h-64 object-cover mt-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} alt="Interior Detail" />
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" className={`w-full h-64 object-cover transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} alt="Architectural Plan" />
              </div>
           </div>
 
