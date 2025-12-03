@@ -1,9 +1,20 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Home } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const LoadingScreen: React.FC = () => {
   return (
-    <div className="min-h-screen bg-charcoal flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen bg-charcoal flex flex-col items-center justify-center p-6 relative">
+      {/* Back to Home Button */}
+      <div className="absolute top-6 left-4 md:left-8 z-10">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-gray-400 hover:text-gold transition-colors"
+        >
+          <Home size={18} />
+          <span className="text-sm">Terug naar site</span>
+        </Link>
+      </div>
       <div className="text-center max-w-md">
         {/* Animated Icon */}
         <div className="relative mb-8">

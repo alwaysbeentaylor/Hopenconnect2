@@ -148,7 +148,8 @@ const ExitPopup: React.FC<ExitPopupProps> = ({ onEmailSubmit }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Uw e-mailadres"
-                    className="w-full px-3 py-3 bg-white border border-gray-200 text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold transition-colors text-sm"
+                    className="w-full px-3 py-3 bg-white border border-gray-200 text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold transition-colors"
+                    style={{ fontSize: '16px' }}
                   />
                 </div>
                 <button

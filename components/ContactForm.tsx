@@ -87,6 +87,7 @@ const ContactForm: React.FC = () => {
                       onChange={handleChange}
                       placeholder="Naam"
                       className="w-full bg-transparent border-b border-gray-300 py-4 text-charcoal focus:outline-none focus:border-gold transition-colors placeholder-gray-400 font-light"
+                      style={{ fontSize: '16px' }}
                     />
                   </div>
                   <div className="relative group">
@@ -98,6 +99,7 @@ const ContactForm: React.FC = () => {
                       onChange={handleChange}
                       placeholder="Telefoon"
                       className="w-full bg-transparent border-b border-gray-300 py-4 text-charcoal focus:outline-none focus:border-gold transition-colors placeholder-gray-400 font-light"
+                      style={{ fontSize: '16px' }}
                     />
                   </div>
                 </div>
@@ -111,6 +113,7 @@ const ContactForm: React.FC = () => {
                     onChange={handleChange}
                     placeholder="Email Adres"
                     className="w-full bg-transparent border-b border-gray-300 py-4 text-charcoal focus:outline-none focus:border-gold transition-colors placeholder-gray-400 font-light"
+                    style={{ fontSize: '16px' }}
                   />
                 </div>
 

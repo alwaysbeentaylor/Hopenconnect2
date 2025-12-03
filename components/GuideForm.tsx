@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft, MapPin, Euro, User, Mail, Briefcase } from 'lucide-react';
+import { ArrowRight, ArrowLeft, MapPin, Euro, User, Mail, Briefcase, Home } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { UserProfile } from '../types';
 
 interface GuideFormProps {
@@ -27,6 +28,17 @@ export const GuideForm: React.FC<GuideFormProps> = ({ onSubmit, onBack }) => {
 
   return (
     <div className="min-h-screen bg-charcoal flex flex-col justify-center py-12 px-4">
+      {/* Back to Home Button */}
+      <div className="absolute top-6 left-4 md:left-8 z-10">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-gray-400 hover:text-gold transition-colors"
+        >
+          <Home size={18} />
+          <span className="text-sm">Terug naar site</span>
+        </Link>
+      </div>
+
       <div className="max-w-lg mx-auto w-full">
         {/* Header */}
         <div className="text-center mb-10">
@@ -59,6 +71,7 @@ export const GuideForm: React.FC<GuideFormProps> = ({ onSubmit, onBack }) => {
                 onChange={handleChange}
                 placeholder="Jan Peeters"
                 className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-gold transition-colors rounded-lg"
+                style={{ fontSize: '16px' }}
               />
             </div>
           </div>
@@ -78,6 +91,7 @@ export const GuideForm: React.FC<GuideFormProps> = ({ onSubmit, onBack }) => {
                 onChange={handleChange}
                 placeholder="jan@voorbeeld.be"
                 className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-gold transition-colors rounded-lg"
+                style={{ fontSize: '16px' }}
               />
             </div>
           </div>

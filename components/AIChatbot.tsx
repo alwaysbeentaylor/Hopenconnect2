@@ -244,7 +244,8 @@ Vraag: ${currentInput}`,
                     value={nameInput}
                     onChange={(e) => setNameInput(e.target.value)}
                     placeholder="Uw naam"
-                    className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold transition-colors"
+                    className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold transition-colors text-base"
+                    style={{ fontSize: '16px' }}
                   />
                 </div>
                 <div className="relative">
@@ -255,7 +256,8 @@ Vraag: ${currentInput}`,
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
                     placeholder="Uw e-mail"
-                    className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold transition-colors"
+                    className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold transition-colors text-base"
+                    style={{ fontSize: '16px' }}
                   />
                 </div>
                 <button
@@ -351,7 +353,8 @@ Vraag: ${currentInput}`,
                     onKeyPress={handleKeyPress}
                     placeholder="Typ uw vraag..."
                     disabled={isLoading}
-                    className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold transition-colors disabled:opacity-50 text-sm"
+                    className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold transition-colors disabled:opacity-50 text-base"
+                    style={{ fontSize: '16px' }}
                   />
                   <button
                     onClick={sendMessage}
