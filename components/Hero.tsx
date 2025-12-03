@@ -1,7 +1,12 @@
 import React from 'react';
 import { ArrowDownRight, ArrowRight } from 'lucide-react';
+import { useCountry } from '../contexts/CountryContext';
+import { getTranslations } from '../config/translations';
 
 const Hero: React.FC = () => {
+  const { country } = useCountry();
+  const t = getTranslations(country);
+
   return (
     <section className="relative w-full min-h-screen bg-silk overflow-hidden flex flex-col md:flex-row">
       
@@ -17,7 +22,7 @@ const Hero: React.FC = () => {
         </div>
         
         <p className="text-gray-600 text-lg font-light max-w-sm leading-relaxed mb-12">
-          Hope Connects is uw exclusieve partner in Belgisch vastgoed. Wij overbruggen de kloof tussen visie en realisatie.
+          {t.hero.subtitle}
         </p>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -58,7 +63,7 @@ const Hero: React.FC = () => {
       {/* Decorative Text Vertical */}
       <div className="hidden lg:block absolute right-8 bottom-12 z-20 mix-blend-difference">
          <span className="writing-vertical text-offwhite text-xs tracking-[0.5em] uppercase opacity-70">
-            Est. 2025 — Belgium
+            {t.hero.countryText}
          </span>
       </div>
       

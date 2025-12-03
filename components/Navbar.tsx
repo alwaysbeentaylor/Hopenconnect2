@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import CountrySelector from './CountrySelector';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,6 +49,8 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           
+          <CountrySelector />
+          
           <a 
             href="#contact" 
             className={`border px-8 py-3 text-xs uppercase tracking-[0.2em] transition-all duration-300 hover:bg-gold hover:border-gold hover:text-white ${isScrolled ? 'border-charcoal text-charcoal' : 'border-white text-white'}`}
@@ -80,6 +83,9 @@ const Navbar: React.FC = () => {
               {item}
             </a>
           ))}
+          <div className="pt-8">
+            <CountrySelector variant="mobile" />
+          </div>
         </div>
       )}
     </nav>

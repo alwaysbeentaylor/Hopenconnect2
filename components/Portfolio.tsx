@@ -1,32 +1,14 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { ProjectItem } from '../types';
-
-const projects: ProjectItem[] = [
-  {
-    id: 1,
-    title: "Villa Duinenzicht",
-    location: "Knokke-Heist",
-    imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1600&auto=format&fit=crop",
-    category: "Totale Renovatie"
-  },
-  {
-    id: 2,
-    title: "Residence 'The View'",
-    location: "Oostende",
-    imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Exclusieve Verkoop"
-  },
-  {
-    id: 3,
-    title: "Maison Louise",
-    location: "Brugge",
-    imageUrl: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Erfgoed"
-  }
-];
+import { useCountry } from '../contexts/CountryContext';
+import { getTranslations } from '../config/translations';
 
 const Portfolio: React.FC = () => {
+  const { country } = useCountry();
+  const t = getTranslations(country);
+  const projects = t.portfolio.projects;
+
   return (
     <section id="projecten" className="py-32 bg-silk overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">

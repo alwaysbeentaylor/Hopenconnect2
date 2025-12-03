@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { X, Download, Gift, ArrowRight } from 'lucide-react';
+import { useCountry } from '../contexts/CountryContext';
+import { getTranslations } from '../config/translations';
 
 interface ExitPopupProps {
   onEmailSubmit?: (email: string) => void;
 }
 
 const ExitPopup: React.FC<ExitPopupProps> = ({ onEmailSubmit }) => {
+  const { country } = useCountry();
+  const t = getTranslations(country);
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -110,10 +114,7 @@ const ExitPopup: React.FC<ExitPopupProps> = ({ onEmailSubmit }) => {
                 Wacht! Vergeet uw <span className="italic text-gold">gratis gids</span> niet.
               </h2>
               
-              <p className="text-sm text-gray-600 font-light mb-5 leading-relaxed">
-                Ontdek de <strong>7 geheimen</strong> die succesvolle vastgoedinvesteerders 
-                in België gebruiken. Van locatiekeuze tot onderhandelen — alles in één praktische gids.
-              </p>
+              <p className="text-sm text-gray-600 font-light mb-5 leading-relaxed" dangerouslySetInnerHTML={{ __html: t.exitPopup.description }} />
 
               {/* What's inside */}
               <div className="bg-charcoal/5 p-4 mb-5">

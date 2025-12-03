@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { Send, CheckCircle, Loader2 } from 'lucide-react';
 import { ProjectType, ContactFormData } from '../types';
 import { sendLeadToTelegram } from '../services/telegramService';
+import { useCountry } from '../contexts/CountryContext';
+import { getTranslations } from '../config/translations';
 
 const ContactForm: React.FC = () => {
+  const { country } = useCountry();
+  const t = getTranslations(country);
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -53,7 +57,7 @@ const ContactForm: React.FC = () => {
               <div className="flex flex-col">
                 <span className="text-xs uppercase tracking-widest text-gray-400 mb-2">Contact</span>
                 <a href="mailto:info@hope-connects.com" className="text-xl font-serif hover:text-gold transition-colors">info@hope-connects.com</a>
-                <span className="text-lg mt-1">+31 6 23 08 75 92</span>
+                <span className="text-lg mt-1">{t.contact.phone}</span>
               </div>
             </div>
           </div>

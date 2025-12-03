@@ -1,7 +1,12 @@
 import React from 'react';
 import { Instagram, Linkedin, Facebook, ArrowRight } from 'lucide-react';
+import { useCountry } from '../contexts/CountryContext';
+import { getTranslations } from '../config/translations';
 
 const Footer: React.FC = () => {
+  const { country } = useCountry();
+  const t = getTranslations(country);
+
   return (
     <footer className="bg-charcoal text-offwhite pt-24 pb-12 border-t border-white/5">
       <div className="container mx-auto px-6 md:px-12">
@@ -9,7 +14,7 @@ const Footer: React.FC = () => {
           <div className="mb-12 md:mb-0">
              <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-none">HOPE <br/> CONNECTS<span className="text-gold">.</span></h2>
              <p className="text-gray-500 max-w-xs font-light mb-8">
-               Exclusief vastgoed & renovatiecoördinatie met een focus op West-Vlaanderen.
+               {t.footer.region}
              </p>
              <a href="#contact" className="inline-flex items-center text-sm uppercase tracking-widest text-gold hover:text-white transition-colors">
                 Start uw project <ArrowRight className="ml-2 w-4 h-4" />

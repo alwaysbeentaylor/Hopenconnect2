@@ -1,5 +1,10 @@
 import React from 'react';
 
+export enum Country {
+  NETHERLANDS = 'NETHERLANDS',
+  BELGIUM = 'BELGIUM'
+}
+
 export enum ProjectType {
   RENOVATION = 'Renovatie',
   SALE = 'Verkoop',
@@ -28,4 +33,25 @@ export interface ProjectItem {
   location: string;
   imageUrl: string;
   category: string;
+}
+
+export interface UserProfile {
+  name: string;
+  email: string;
+  budgetRange?: string;
+  focusRegion?: string;
+  experience?: 'beginner' | 'intermediate' | 'expert';
+}
+
+export interface GuideChapter {
+  title: string;
+  content: string;
+  keyTakeaway: string;
+}
+
+export interface RealEstateGuide {
+  title: string;
+  introduction: string;
+  chapters: GuideChapter[];
+  conclusion: string;
 }

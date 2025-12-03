@@ -1,0 +1,5 @@
+{
+  "name": "Belgisch Vastgoed Meesterschap",
+  "description": "Een exclusieve lead-generator die een gepersonaliseerde vastgoedgids genereert met behulp van Google Gemini Ultrathink.",
+  "requestFramePermissions": []
+}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowDownRight } from 'lucide-react';
+import { useCountry } from '../contexts/CountryContext';
+import { getTranslations } from '../config/translations';
 
 const services = [
   {
@@ -17,13 +19,23 @@ const services = [
   {
     id: '03',
     title: 'Investeringsadvies',
-    description: 'Rendement ontmoet zekerheid. Wij analyseren de markt aan de kust en binnenland om opportuniteiten te vinden die waarde garanderen voor de volgende generatie.',
+    description: '', // Will be set dynamically
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
   }
 ];
 
 const Services: React.FC = () => {
+  const { country } = useCountry();
+  const t = getTranslations(country);
   const [activeService, setActiveService] = useState(0);
+
+  // Update service description with country-specific text
+  const servicesWithTranslations = services.map(service => {
+    if (service.id === '03') {
+      return { ...service, description: t.services.investmentDescription };
+    }
+    return service;
+  });
 
   return (
     <section id="diensten" className="py-24 md:py-32 bg-offwhite text-charcoal">
@@ -38,7 +50,7 @@ const Services: React.FC = () => {
             </div>
 
             <div className="space-y-0">
-              {services.map((service, index) => (
+              {servicesWithTranslations.map((service, index) => (
                 <div 
                   key={service.id}
                   className={`border-t border-gray-300 py-8 md:py-10 cursor-pointer group transition-all duration-500 ${activeService === index ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`}
@@ -71,7 +83,7 @@ const Services: React.FC = () => {
           {/* Image Side (Sticky) - Desktop Only */}
           <div className="hidden lg:block w-1/2 relative h-[600px]">
             <div className="sticky top-32 w-full h-full">
-              {services.map((service, index) => (
+              {servicesWithTranslations.map((service, index) => (
                 <img
                   key={service.id}
                   src={service.image}

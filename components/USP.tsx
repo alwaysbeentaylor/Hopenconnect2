@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useCountry } from '../contexts/CountryContext';
+import { getTranslations } from '../config/translations';
 
 const USP: React.FC = () => {
+  const { country } = useCountry();
+  const t = getTranslations(country);
   const [isVisible, setIsVisible] = useState(false);
   const [offset, setOffset] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
@@ -72,7 +76,7 @@ const USP: React.FC = () => {
               maar een <span className="text-gold italic">thuishaven.</span>
             </h2>
             <p className="text-gray-400 text-lg font-light mb-8 leading-relaxed">
-              Bij Hope Connects geloven we dat een woning meer is dan muren en een dak. Het is de plek waar herinneringen worden gemaakt. Onze aanpak is gebaseerd op discretie, diepgaande lokale kennis van West-Vlaanderen en een compromisloos streven naar perfectie.
+              {t.usp.localKnowledge}
             </p>
             
             <div className="flex gap-8 border-t border-white/10 pt-8 mt-8">

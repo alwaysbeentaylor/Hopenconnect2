@@ -9,6 +9,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import ExitPopup from './components/ExitPopup';
 import { sendGuideRequestToTelegram } from './services/telegramService';
+import { CountryProvider } from './contexts/CountryContext';
 
 const App: React.FC = () => {
   const handleGuideRequest = (email: string) => {
@@ -16,17 +17,19 @@ const App: React.FC = () => {
   };
 
   return (
-    <main className="w-full min-h-screen bg-charcoal">
-      <Navbar />
-      <Hero />
-      <Services />
-      <USP />
-      <Portfolio />
-      <Testimonial />
-      <ContactForm />
-      <Footer />
-      <ExitPopup onEmailSubmit={handleGuideRequest} />
-    </main>
+    <CountryProvider>
+      <main className="w-full min-h-screen bg-charcoal">
+        <Navbar />
+        <Hero />
+        <Services />
+        <USP />
+        <Portfolio />
+        <Testimonial />
+        <ContactForm />
+        <Footer />
+        <ExitPopup onEmailSubmit={handleGuideRequest} />
+      </main>
+    </CountryProvider>
   );
 };
 

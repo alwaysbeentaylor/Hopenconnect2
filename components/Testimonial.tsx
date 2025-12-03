@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useCountry } from '../contexts/CountryContext';
+import { getTranslations } from '../config/translations';
 
 const Testimonial: React.FC = () => {
+  const { country } = useCountry();
+  const t = getTranslations(country);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -36,7 +40,7 @@ const Testimonial: React.FC = () => {
         </blockquote>
         <div className={`w-12 h-0.5 bg-gold mx-auto mb-6 transition-all duration-1000 delay-500 ${isVisible ? 'w-12 opacity-100' : 'w-0 opacity-0'}`}></div>
         <p className="text-sm uppercase tracking-[0.2em] text-gray-400">
-          Familie Vermeulen — <span className="text-gold">Knokke</span>
+          Familie Vermeulen — <span className="text-gold">{t.testimonial.location}</span>
         </p>
       </div>
     </section>
