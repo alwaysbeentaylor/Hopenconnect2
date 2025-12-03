@@ -7,7 +7,7 @@ const projects: ProjectItem[] = [
     id: 1,
     title: "Villa Duinenzicht",
     location: "Knokke-Heist",
-    imageUrl: "https://images.unsplash.com/photo-1600596542815-3ad195fa4a5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1600&auto=format&fit=crop", // Updated image
     category: "Totale Renovatie"
   },
   {

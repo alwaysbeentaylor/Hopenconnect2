@@ -13,23 +13,30 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Text color logic: If scrolled (white bg), text is dark. If top (dark bg), text is white.
-  // Exception: Mobile menu overrides this.
-  const textColor = isScrolled ? 'text-charcoal' : 'text-charcoal md:text-offwhite';
-  const navClasses = `fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-    isScrolled ? 'bg-offwhite/90 backdrop-blur-md py-4 border-b border-gray-200' : 'bg-transparent py-8'
-  }`;
+  // Design Logic:
+  // The layout is split: Left is Light (Silk), Right is Dark (Image).
+  // Logo (Left) must be Dark (Charcoal).
+  // Menu (Right) must be White (Offwhite) when transparent, but Dark when scrolled (white bg).
+  // Mobile Menu Button is usually on the right/top, on mobile the header is bg-silk, so button is Charcoal.
+
+  const navBackground = isScrolled 
+    ? 'bg-offwhite/90 backdrop-blur-md py-4 border-b border-gray-200' 
+    : 'bg-transparent py-8';
+
+  const logoColor = 'text-charcoal'; // Always dark on the light silk background
+  const menuTextColor = isScrolled ? 'text-charcoal' : 'text-white'; // White on image, dark on scroll
+  const mobileButtonColor = 'text-charcoal';
 
   return (
-    <nav className={navClasses}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${navBackground}`}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        {/* Logo */}
-        <div className={`text-xl md:text-2xl font-serif tracking-widest uppercase z-50 transition-colors ${textColor}`}>
+        {/* Logo - Always Charcoal because it sits on the Silk (Light) background */}
+        <div className={`text-xl md:text-2xl font-serif tracking-widest uppercase z-50 transition-colors ${logoColor}`}>
           Hope <span className="font-bold">Connects</span>
         </div>
 
-        {/* Desktop Menu */}
-        <div className={`hidden md:flex space-x-12 items-center ${textColor}`}>
+        {/* Desktop Menu - White on top (over image), Charcoal on scroll */}
+        <div className={`hidden md:flex space-x-12 items-center ${menuTextColor}`}>
           {['Diensten', 'Over ons', 'Projecten'].map((item) => (
             <a 
               key={item}
@@ -43,17 +50,17 @@ const Navbar: React.FC = () => {
           
           <a 
             href="#contact" 
-            className={`border px-8 py-3 text-xs uppercase tracking-[0.2em] transition-all duration-300 hover:bg-gold hover:border-gold hover:text-white ${isScrolled ? 'border-charcoal text-charcoal' : 'border-offwhite text-offwhite'}`}
+            className={`border px-8 py-3 text-xs uppercase tracking-[0.2em] transition-all duration-300 hover:bg-gold hover:border-gold hover:text-white ${isScrolled ? 'border-charcoal text-charcoal' : 'border-white text-white'}`}
           >
             Contact
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button - Charcoal to contrast with Silk background */}
         <div className="md:hidden z-50">
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-            className={isMobileMenuOpen ? 'text-offwhite' : 'text-charcoal'}
+            className={isMobileMenuOpen ? 'text-offwhite' : mobileButtonColor}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
