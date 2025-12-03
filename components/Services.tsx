@@ -1,0 +1,82 @@
+import React, { useState } from 'react';
+
+const services = [
+  {
+    id: '01',
+    title: 'Renovatie Coördinatie',
+    description: 'Van ruwbouw tot verfijnde afwerking. Wij nemen de leiding over aannemers, budget en timing, zodat u zorgeloos kunt toekijken hoe uw visie werkelijkheid wordt.',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: '02',
+    title: 'Verkoopbemiddeling',
+    description: 'Een discreet en krachtig netwerk. Wij positioneren uw eigendom in de markt met oog voor detail, esthetiek en de juiste doelgroep.',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: '03',
+    title: 'Investeringsadvies',
+    description: 'Rendement ontmoet zekerheid. Wij analyseren de markt aan de kust en binnenland om opportuniteiten te vinden die waarde garanderen voor de volgende generatie.',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+  }
+];
+
+const Services: React.FC = () => {
+  const [activeService, setActiveService] = useState(0);
+
+  return (
+    <section id="diensten" className="py-32 bg-offwhite text-charcoal">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="flex flex-col lg:flex-row gap-20">
+          
+          {/* List Side */}
+          <div className="w-full lg:w-1/2 space-y-12">
+            <div>
+              <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase block mb-4">Onze Expertise</span>
+              <h2 className="text-4xl md:text-5xl font-serif">Wij creëren waarde.</h2>
+            </div>
+
+            <div className="space-y-0">
+              {services.map((service, index) => (
+                <div 
+                  key={service.id}
+                  className={`border-t border-gray-300 py-10 cursor-pointer group transition-all duration-500 ${activeService === index ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
+                  onMouseEnter={() => setActiveService(index)}
+                >
+                  <div className="flex items-baseline justify-between mb-4">
+                    <span className="text-xs font-mono text-gold mr-4">/{service.id}</span>
+                    <h3 className="text-3xl font-serif flex-grow">{service.title}</h3>
+                  </div>
+                  <div className={`overflow-hidden transition-all duration-500 ${activeService === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <p className="text-gray-500 font-light pl-10 max-w-md leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              <div className="border-t border-gray-300"></div>
+            </div>
+          </div>
+
+          {/* Image Side (Sticky) */}
+          <div className="hidden lg:block w-1/2 relative h-[600px]">
+            <div className="sticky top-32 w-full h-full">
+              {services.map((service, index) => (
+                <img
+                  key={service.id}
+                  src={service.image}
+                  alt={service.title}
+                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out grayscale ${activeService === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                />
+              ))}
+              <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-gold z-[-1]"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;

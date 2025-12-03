@@ -1,0 +1,26 @@
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import USP from './components/USP';
+import Portfolio from './components/Portfolio';
+import Testimonial from './components/Testimonial';
+import ContactForm from './components/ContactForm';
+import Footer from './components/Footer';
+
+const App: React.FC = () => {
+  return (
+    <main className="w-full min-h-screen bg-charcoal">
+      <Navbar />
+      <Hero />
+      <Services />
+      <USP />
+      <Portfolio />
+      <Testimonial />
+      <ContactForm />
+      <Footer />
+    </main>
+  );
+};
+
+export default App;

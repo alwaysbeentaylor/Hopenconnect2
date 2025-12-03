@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hope Connects | Exclusief Vastgoed & Renovatie</title>
+    <meta name="description" content="Hope Connects verbindt dromen met realiteit. Premium vastgoed en renovatiecoördinatie in België." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              charcoal: '#121216', // Darker, richer
+              gold: '#C5A059', // More muted, elegant gold
+              'gold-light': '#E5C585',
+              offwhite: '#F5F5F0', // Warmer white
+              silk: '#EAEAE5', // Secondary light color
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            backgroundImage: {
+              'hero-texture': "url('https://www.transparenttextures.com/patterns/cubes.png')", 
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #121216; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #C5A059; 
+      }
+      
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+        color: transparent;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.6",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-offwhite text-charcoal antialiased selection:bg-gold selection:text-white">
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,11 +1,34 @@
-<div align="center">
+# Hope Connects
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Premium single-page real estate application for Hope Connects Belgium.
 
-  <h1>Built with AI Studio</h2>
+## Getting Started
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+1.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+2.  **Run development server:**
+    ```bash
+    npm run dev
+    ```
 
-</div>
+3.  **Build for production:**
+    ```bash
+    npm run build
+    ```
+
+## Telegram Integration
+
+To enable the contact form:
+1.  Open `src/services/telegramService.ts`
+2.  Replace `YOUR_BOT_TOKEN_HERE` with your Telegram Bot Token.
+3.  Replace `YOUR_CHAT_ID_HERE` with your Chat ID.
+
+## Deploying to Vercel
+
+1.  Push this repository to GitHub.
+2.  Import the project in Vercel.
+3.  Vercel will automatically detect the Vite settings.
+4.  Deploy!
