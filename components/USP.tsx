@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const USP: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [offset, setOffset] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -9,7 +10,7 @@ const USP: React.FC = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect(); // Only animate once
+          observer.disconnect(); // Only animate fade-in once
         }
       },
       {
@@ -21,7 +22,23 @@ const USP: React.FC = () => {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    // Parallax scroll handler
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        // Calculate offset only when section is roughly in view to save performance
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setOffset(window.scrollY * 0.05); // Subtle speed factor
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -40,8 +57,12 @@ const USP: React.FC = () => {
           
           <div className="order-2 md:order-1">
              <div className="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" className={`w-full h-64 object-cover mt-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} alt="Interior Detail" />
-                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" className={`w-full h-64 object-cover transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} alt="Architectural Plan" />
+                <div style={{ transform: `translateY(${offset}px)` }} className="transition-transform duration-75 ease-out">
+                  <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" className={`w-full h-64 object-cover mt-12 transition-all duration-1000 delay-300 shadow-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} alt="Interior Detail" />
+                </div>
+                <div style={{ transform: `translateY(-${offset * 0.5}px)` }} className="transition-transform duration-75 ease-out">
+                  <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" className={`w-full h-64 object-cover transition-all duration-1000 delay-500 shadow-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} alt="Architectural Plan" />
+                </div>
              </div>
           </div>
 

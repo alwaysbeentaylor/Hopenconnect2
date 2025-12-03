@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDownRight } from 'lucide-react';
+import { ArrowDownRight, ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -21,11 +21,15 @@ const Hero: React.FC = () => {
         </p>
 
         <div className="flex items-center space-x-4">
-          <a href="#contact" className="group flex items-center gap-4 text-charcoal uppercase tracking-widest text-xs font-medium hover:text-gold transition-colors">
-            <span className="w-12 h-12 border border-charcoal/20 rounded-full flex items-center justify-center group-hover:border-gold group-hover:bg-gold group-hover:text-white transition-all duration-300">
-              <ArrowDownRight size={16} />
-            </span>
-            Start uw verhaal
+          <a 
+            href="#contact" 
+            className="group relative px-8 py-4 bg-charcoal text-white text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:bg-gold hover:shadow-lg overflow-hidden flex items-center gap-3"
+          >
+            <span className="relative z-10">Start uw verhaal</span>
+            <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+            
+            {/* Hover shine effect */}
+            <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-gold/10"></div>
           </a>
         </div>
       </div>
@@ -41,7 +45,7 @@ const Hero: React.FC = () => {
         </div>
         
         {/* Floating Element */}
-        <div className="absolute bottom-0 left-0 bg-gold/90 p-8 md:p-12 text-white max-w-sm hidden md:block">
+        <div className="absolute bottom-0 left-0 bg-gold/90 p-8 md:p-12 text-white max-w-sm hidden md:block backdrop-blur-sm">
           <p className="font-serif italic text-2xl leading-tight">
             "Vastgoed is geen transactie, het is de fundering van uw toekomst."
           </p>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ArrowDownRight } from 'lucide-react';
 
 const services = [
   {
@@ -25,9 +26,9 @@ const Services: React.FC = () => {
   const [activeService, setActiveService] = useState(0);
 
   return (
-    <section id="diensten" className="py-32 bg-offwhite text-charcoal">
+    <section id="diensten" className="py-24 md:py-32 bg-offwhite text-charcoal">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col lg:flex-row gap-20">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           
           {/* List Side */}
           <div className="w-full lg:w-1/2 space-y-12">
@@ -40,15 +41,24 @@ const Services: React.FC = () => {
               {services.map((service, index) => (
                 <div 
                   key={service.id}
-                  className={`border-t border-gray-300 py-10 cursor-pointer group transition-all duration-500 ${activeService === index ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
+                  className={`border-t border-gray-300 py-8 md:py-10 cursor-pointer group transition-all duration-500 ${activeService === index ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`}
                   onMouseEnter={() => setActiveService(index)}
+                  onClick={() => setActiveService(index)}
                 >
                   <div className="flex items-baseline justify-between mb-4">
                     <span className="text-xs font-mono text-gold mr-4">/{service.id}</span>
-                    <h3 className="text-3xl font-serif flex-grow">{service.title}</h3>
+                    <h3 className="text-2xl md:text-3xl font-serif flex-grow transition-colors group-hover:text-gold">{service.title}</h3>
+                    <ArrowDownRight className={`transform transition-transform duration-500 lg:hidden text-gold ${activeService === index ? 'rotate-0' : '-rotate-90'}`} size={20} />
                   </div>
-                  <div className={`overflow-hidden transition-all duration-500 ${activeService === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <p className="text-gray-500 font-light pl-10 max-w-md leading-relaxed">
+                  
+                  {/* Expanded Content */}
+                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeService === index ? 'max-h-[500px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
+                    {/* Mobile Image */}
+                    <div className="lg:hidden mb-6 rounded-sm overflow-hidden h-48 w-full">
+                       <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                    </div>
+
+                    <p className="text-gray-500 font-light pl-0 md:pl-10 max-w-md leading-relaxed text-base md:text-lg">
                       {service.description}
                     </p>
                   </div>
@@ -58,7 +68,7 @@ const Services: React.FC = () => {
             </div>
           </div>
 
-          {/* Image Side (Sticky) */}
+          {/* Image Side (Sticky) - Desktop Only */}
           <div className="hidden lg:block w-1/2 relative h-[600px]">
             <div className="sticky top-32 w-full h-full">
               {services.map((service, index) => (
@@ -66,7 +76,7 @@ const Services: React.FC = () => {
                   key={service.id}
                   src={service.image}
                   alt={service.title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out grayscale ${activeService === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out shadow-2xl ${activeService === index ? 'opacity-100 scale-100 grayscale-0' : 'opacity-0 scale-95 grayscale'}`}
                 />
               ))}
               <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-gold z-[-1]"></div>
