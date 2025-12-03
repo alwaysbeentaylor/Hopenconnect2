@@ -7,8 +7,14 @@ import Portfolio from './components/Portfolio';
 import Testimonial from './components/Testimonial';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+import ExitPopup from './components/ExitPopup';
+import { sendGuideRequestToTelegram } from './services/telegramService';
 
 const App: React.FC = () => {
+  const handleGuideRequest = (email: string) => {
+    sendGuideRequestToTelegram(email);
+  };
+
   return (
     <main className="w-full min-h-screen bg-charcoal">
       <Navbar />
@@ -19,6 +25,7 @@ const App: React.FC = () => {
       <Testimonial />
       <ContactForm />
       <Footer />
+      <ExitPopup onEmailSubmit={handleGuideRequest} />
     </main>
   );
 };

@@ -51,13 +51,9 @@ const ContactForm: React.FC = () => {
             
             <div className="space-y-8">
               <div className="flex flex-col">
-                <span className="text-xs uppercase tracking-widest text-gray-400 mb-2">Locatie</span>
-                <span className="text-xl font-serif">Kustlaan 123, 8300 Knokke-Heist</span>
-              </div>
-              <div className="flex flex-col">
                 <span className="text-xs uppercase tracking-widest text-gray-400 mb-2">Contact</span>
-                <a href="mailto:info@hopeconnects.be" className="text-xl font-serif hover:text-gold transition-colors">info@hopeconnects.be</a>
-                <span className="text-lg mt-1">+32 (0)50 12 34 56</span>
+                <a href="mailto:info@hope-connects.com" className="text-xl font-serif hover:text-gold transition-colors">info@hope-connects.com</a>
+                <span className="text-lg mt-1">+31 6 23 08 75 92</span>
               </div>
             </div>
           </div>

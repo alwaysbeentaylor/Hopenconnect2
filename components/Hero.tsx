@@ -20,16 +20,19 @@ const Hero: React.FC = () => {
           Hope Connects is uw exclusieve partner in Belgisch vastgoed. Wij overbruggen de kloof tussen visie en realisatie.
         </p>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <a 
             href="#contact" 
-            className="group relative px-8 py-4 bg-charcoal text-white text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:bg-gold hover:shadow-lg overflow-hidden flex items-center gap-3"
+            className="group relative px-10 py-5 bg-gold text-charcoal text-xs uppercase tracking-[0.25em] font-semibold transition-all duration-300 hover:bg-charcoal hover:text-white hover:shadow-2xl flex items-center gap-4"
           >
-            <span className="relative z-10">Start uw verhaal</span>
-            <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-            
-            {/* Hover shine effect */}
-            <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-gold/10"></div>
+            <span>Gratis Adviesgesprek</span>
+            <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-300" />
+          </a>
+          <a 
+            href="#diensten" 
+            className="text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-1"
+          >
+            Bekijk diensten
           </a>
         </div>
       </div>

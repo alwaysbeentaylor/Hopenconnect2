@@ -7,7 +7,7 @@ const projects: ProjectItem[] = [
     id: 1,
     title: "Villa Duinenzicht",
     location: "Knokke-Heist",
-    imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1600&auto=format&fit=crop", // Updated image
+    imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1600&auto=format&fit=crop",
     category: "Totale Renovatie"
   },
   {
@@ -15,14 +15,14 @@ const projects: ProjectItem[] = [
     title: "Residence 'The View'",
     location: "Oostende",
     imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Exclusive Sale"
+    category: "Exclusieve Verkoop"
   },
   {
     id: 3,
     title: "Maison Louise",
     location: "Brugge",
     imageUrl: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Heritage"
+    category: "Erfgoed"
   }
 ];
 
@@ -32,7 +32,7 @@ const Portfolio: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex justify-between items-end mb-20">
           <h2 className="text-4xl md:text-6xl font-serif text-charcoal">
-            Selected <span className="italic text-gray-400">Works</span>
+            Onze <span className="italic text-gold">Realisaties</span>
           </h2>
           <div className="hidden md:block w-32 h-[1px] bg-charcoal mb-4"></div>
         </div>
