@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Download, Gift, ArrowRight } from 'lucide-react';
+import { X, Download, Gift, ArrowRight, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { trackDownloadClick } from '../services/analyticsService';
 
 interface ExitPopupProps {
   onEmailSubmit?: (email: string) => void;
@@ -47,6 +49,9 @@ const ExitPopup: React.FC<ExitPopupProps> = ({ onEmailSubmit }) => {
     if (onEmailSubmit) {
       onEmailSubmit(email);
     }
+
+    // Track the download click
+    trackDownloadClick('exit_popup');
 
     // Simulate sending
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -162,6 +167,27 @@ const ExitPopup: React.FC<ExitPopupProps> = ({ onEmailSubmit }) => {
                 </button>
               </form>
 
+              {/* Divider */}
+              <div className="relative my-5">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200"></div>
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="px-3 bg-silk text-gray-400">of</span>
+                </div>
+              </div>
+
+              {/* Personalized Guide Link */}
+              <Link
+                to="/gids"
+                onClick={handleClose}
+                className="w-full group flex items-center justify-center gap-3 px-6 py-3 bg-charcoal text-white text-xs uppercase tracking-[0.15em] font-medium transition-all duration-300 hover:bg-gold hover:text-charcoal"
+              >
+                <Sparkles size={14} className="text-gold group-hover:text-charcoal" />
+                <span>Ontvang een Gids op Maat (AI)</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+
               <p className="text-xs text-gray-400 text-center mt-3">
                 Geen spam. Alleen waardevolle inzichten.
               </p>
@@ -197,4 +223,3 @@ const ExitPopup: React.FC<ExitPopupProps> = ({ onEmailSubmit }) => {
 };
 
 export default ExitPopup;
-

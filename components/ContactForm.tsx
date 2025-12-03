@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Send, CheckCircle, Loader2 } from 'lucide-react';
 import { ProjectType, ContactFormData } from '../types';
 import { sendLeadToTelegram } from '../services/telegramService';
+import { trackEmailSubmission } from '../services/analyticsService';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -31,6 +32,13 @@ const ContactForm: React.FC = () => {
 
     if (success) {
       setStatus('success');
+      // Track the email submission with all form data
+      trackEmailSubmission(formData.email, 'contact_form', {
+        name: formData.name,
+        phone: formData.phone,
+        projectType: formData.projectType,
+        message: formData.message
+      });
       setFormData({ name: '', email: '', phone: '', projectType: ProjectType.RENOVATION, message: '' });
     } else {
       setStatus('error');

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Instagram, Linkedin, Facebook, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
@@ -49,6 +50,7 @@ const Footer: React.FC = () => {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-gold transition-colors">Privacy</a>
             <a href="#" className="hover:text-gold transition-colors">Terms</a>
+            <Link to="/admin" className="hover:text-gold transition-colors text-gray-400">Admin</Link>
           </div>
         </div>
       </div>
